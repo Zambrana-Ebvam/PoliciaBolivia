@@ -1,0 +1,248 @@
+/* IncidentTracking.css - Diseño Moderno Dashboard Policial */
+
+.incident-tracking-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin-top: 20px;
+  border: 1px solid #eef2f6;
+}
+
+/* --- HEADER --- */
+.tracking-header {
+  background: linear-gradient(135deg, #1a237e 0%, #283593 100%); /* Azul Policial */
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.pulsing-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3d00;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 0 0 0 rgba(255, 61, 0, 0.4);
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(255, 61, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 61, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 61, 0, 0); }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.last-update {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.btn-refresh {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-refresh:hover {
+  background: rgba(255,255,255,0.4);
+  transform: rotate(180deg);
+}
+
+/* --- CONNECTION PANEL (Tarjetas) --- */
+.connection-panel {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #f8f9fa;
+  min-height: 140px;
+}
+
+/* Línea conectora de fondo */
+.connection-panel::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.entity-card {
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 280px;
+  transition: transform 0.2s;
+  border: 1px solid transparent;
+}
+
+.entity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.civil-card { border-left: 4px solid #e74c3c; } /* Rojo para emergencia */
+.officer-card { border-left: 4px solid #3498db; } /* Azul para policía */
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.civil-avatar { background-color: #fadbd8; color: #c0392b; }
+.officer-avatar { background-color: #d6eaf8; color: #2980b9; }
+
+.entity-info h4 {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #7f8c8d;
+  letter-spacing: 0.5px;
+}
+
+.entity-name {
+  margin: 4px 0 8px 0;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* Pills de estado */
+.status-badge {
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.active { background-color: #fff3e0; color: #e67e22; }
+.status-badge.assigned { background-color: #e8f8f5; color: #27ae60; }
+.status-badge.searching { background-color: #f2f3f4; color: #7f8c8d; }
+
+/* --- CENTER ROUTE INFO --- */
+.route-info {
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.distance-badge {
+  text-align: center;
+}
+
+.dist-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #95a5a6;
+  text-transform: uppercase;
+}
+
+.dist-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2c3e50;
+}
+
+/* Animación de puntos conectores */
+.dashed-line {
+  margin-top: 5px;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, #3498db 50%, transparent 50%);
+  background-size: 10px 100%;
+  animation: dash-move 1s linear infinite;
+}
+
+@keyframes dash-move {
+  0% { background-position: 0 0; }
+  100% { background-position: -20px 0; }
+}
+
+/* --- MAP CONTAINER --- */
+.tracking-map-container {
+  padding: 0;
+  position: relative;
+  border-top: 1px solid #eef2f6;
+}
+
+.map-controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 400; /* Encima de Leaflet */
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.route-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #34495e;
+  cursor: pointer;
+}
+
+/* Loading state */
+.tracking-loading {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+  font-style: italic;
+}

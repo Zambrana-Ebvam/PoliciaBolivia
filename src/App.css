@@ -1,0 +1,13 @@
+/* Agrega esto al App.css o MapView.css */
+.leaflet-popup-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.leaflet-popup-content strong {
+  color: #2c3e50;
+}
+
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
